@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' show get;
 
 import 'models/image_model.dart';
+import './widgets/image_list.dart';
 
 class App extends StatefulWidget {
   createState() {
@@ -19,9 +20,9 @@ class AppState extends State<App> {
   void fetchImage() async {
     counter++;
     // not the actual json data. this is information about the request.
-    var response = await get(
+    final response = await get(
         Uri.parse('https://jsonplaceholder.typicode.com/photos/$counter'));
-    var imageModel = ImageModel.fromJson(json.decode(
+    final imageModel = ImageModel.fromJson(json.decode(
         response.body)); // remember the JSON is raw needs to be converted
 
     // update when the images come
@@ -34,7 +35,7 @@ class AppState extends State<App> {
   Widget build(context) {
     return MaterialApp(
       home: Scaffold(
-        body: Text('$counter'),
+        body: ImageList(images),
         floatingActionButton:
             FloatingActionButton(child: Icon(Icons.add), onPressed: fetchImage),
         appBar: AppBar(
