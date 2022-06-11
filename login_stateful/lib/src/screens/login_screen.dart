@@ -43,6 +43,8 @@ class LoginScreenState extends State<LoginScreen> {
 
   Widget submitButton() {
     return ElevatedButton(
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.all(Colors.blue)),
       child: Text('Submit'),
       onPressed: () => print("----"),);
   }
