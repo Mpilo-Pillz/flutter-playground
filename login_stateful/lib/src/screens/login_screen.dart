@@ -46,7 +46,9 @@ class LoginScreenState extends State<LoginScreen> {
       style:
           ButtonStyle(foregroundColor: MaterialStateProperty.all(Colors.white)),
       child: Text('Submit'),
-      onPressed: () => print("----"),
+      onPressed: () {
+        formKey.currentState?.reset();
+      },
     );
   }
 }
